@@ -2,12 +2,9 @@
 export {
   person,
   social,
-  newsletter,
   home,
   about,
-  blog,
   work,
-  gallery,
 } from "./content";
 
 export {
@@ -20,7 +17,6 @@ export {
   style,
   schema,
   sameAs,
-  socialSharing,
   effects,
   dataStyle,
 } from "./once-ui.config";

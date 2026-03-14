@@ -1,0 +1,46 @@
+---
+title: "PeerlyPay — P2P Crypto Ramp"
+publishedAt: "2026-03-01"
+summary: "A decentralized P2P marketplace for trading USDC and local fiat, built on Stellar Soroban. Designed and built during the Impacta Bootcamp by Stellar."
+images:
+  - "/images/projects/peerlypay-home.png.png"
+  - "/images/projects/peerlypay-trade.png.png"
+  - "/images/projects/peerlypay-payment.png.png"
+  - "/images/projects/peerlypay-profile.png.png"
+team:
+  - name: "Barbara Olivera"
+    role: "Product Designer & Frontend"
+link: "https://peerly-pay.vercel.app"
+---
+
+## Overview
+
+PeerlyPay is a trustless P2P fiat-to-crypto ramp built for remote workers, freelancers, and digital nomads in emerging markets who earn in crypto but have local expenses. Built in a team of 4 during the Impacta Bootcamp by Stellar.
+
+**My role:** Product designer. I owned the full UX — user flows, wireframes, UI system — and implemented the frontend.
+
+## The Problem
+
+People in emerging markets who earn in USDC need to convert to local fiat (ARS, COP, etc.) regularly. Centralized exchanges require KYC and charge high fees. OTC deals are risky. PeerlyPay provides a trustless middle ground: funds secured in Stellar Soroban smart contracts, with cross-chain dispute resolution on Base via the Slice Protocol.
+
+## Design Decisions
+
+### Mobile-First for Emerging Markets
+
+The primary user is a freelancer checking their balance and making trades on their phone. Every screen was designed mobile-first — large touch targets, minimal cognitive load, clear status communication at each step of the trade flow.
+
+### Trust Through Transparency
+
+P2P trading requires trust between strangers. The UI makes the escrow mechanism visible — users can see their funds are locked in a smart contract, not held by a platform. The Confirm Trade screen shows exactly what you send, what you receive, which network, and estimated time before any commitment.
+
+### Reducing Friction for Crypto Newcomers
+
+The Enable USDC step (setting up a Stellar trustline) is a technical requirement that could confuse non-crypto users. I reframed it as "Secure your payment" — a one-time setup that protects the user — to make it feel like a safety feature rather than a blockchain operation.
+
+### Trade Flow
+
+Connect wallet → Create or match an order → Funds locked in Soroban escrow → Off-chain fiat transfer via Bank/MercadoPago → Seller confirms → USDC released. Dispute flow bridges to Base for arbitration via Slice Protocol.
+
+## Stack
+
+Next.js 16 + TypeScript · Tailwind CSS v4 · shadcn/ui · Stellar Soroban (Rust) · Base + Slice Protocol · wagmi + viem · Vercel

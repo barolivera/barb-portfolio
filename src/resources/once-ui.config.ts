@@ -8,7 +8,6 @@ import {
   RoutesConfig,
   SameAsConfig,
   SchemaConfig,
-  SocialSharingConfig,
   StyleConfig,
 } from "@/types";
 import { home } from "./index";
@@ -20,8 +19,6 @@ const routes: RoutesConfig = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
 };
 
 const display: DisplayConfig = {
@@ -200,21 +197,6 @@ const sameAs: SameAsConfig = {
   discord: "https://discord.com/invite/5EyAQ4eNdS",
 };
 
-// social sharing configuration for blog posts
-const socialSharing: SocialSharingConfig = {
-  display: true,
-  platforms: {
-    x: true,
-    linkedin: true,
-    facebook: false,
-    pinterest: false,
-    whatsapp: false,
-    reddit: false,
-    telegram: false,
-    email: true,
-    copyLink: true,
-  },
-};
 
 export {
   display,
@@ -226,7 +208,6 @@ export {
   style,
   schema,
   sameAs,
-  socialSharing,
   effects,
   dataStyle,
 };

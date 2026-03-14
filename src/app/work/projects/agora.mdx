@@ -1,0 +1,57 @@
+---
+title: "Agora — Decentralized Event Platform"
+publishedAt: "2026-03-06"
+summary: "A Web3-native event platform built on Arkiv where events, communities, and attendance records live on-chain. Winner of the Arkiv Web3 Database Builders Challenge."
+images:
+  - "/images/projects/agora-hero.png.png"
+  - "/images/projects/agora-events.png.png"
+  - "/images/projects/agora-community.png.png"
+  - "/images/projects/agora-components.png.png"
+team:
+  - name: "Barbara Olivera"
+    role: "Designer & Developer"
+    avatar: "/images/avatar.jpg"
+link: "https://agora-xyz.vercel.app"
+---
+
+## Overview
+
+Agora is a crypto-native event platform built solo in 14 days for the Arkiv Web3 Database Builders Challenge (Feb 20 – Mar 6, 2026). The challenge: replace centralized platforms like Luma and Eventbrite with a version where all data lives on-chain, owned by its creators.
+
+**Won 1st place** in the Event Platform vertical.
+
+## The Problem
+
+Event platforms are centralized and siloed. Organizers don't own their data, attendance records disappear, and communities have no on-chain identity. Agora flips this: every event, RSVP, and attendance record is a permanent, verifiable entity on Arkiv.
+
+## Design Decisions
+
+### Entity Architecture as UX
+
+The data model directly shaped the UX. With 8 entity types — Event, Community, Profile, RSVP, Waitlist, Attendance, Subscription, and Approval — each with rational expiration dates, I had to design flows that felt simple on the surface but respected complex ownership rules underneath.
+
+The hardest example: the approval system. In Arkiv, only entity owners can modify their own data. This meant community leaders couldn't simply "approve" an event by updating its status — they don't own that entity. The solution was redesigning approvals as separate entities created by the community leader's wallet. This constraint actually produced a better, more decentralized design.
+
+### Wallet-Native Identity
+
+No passwords, no profiles to fill out. Your wallet is your identity. Every write operation verifies chain ID and wallet ownership. The UI had to make this feel seamless — connecting a wallet needed to feel like logging in, not a crypto interaction.
+
+### AI-Powered Luma Import
+
+To lower the barrier for organizers already using Luma, I built an AI enrichment flow: paste a Luma URL, and Claude automatically extracts event details, categorizes the event type, and suggests relevant communities. The challenge was that Luma pages use three different data formats (JSON-LD, NEXT_DATA, OpenGraph) depending on the event — so we built a 3-strategy fallback chain.
+
+### Event Card System
+
+Designed a flexible card component system that handles events with and without cover images, multiple status states (Upcoming, Live, Ended), and category tags — all while maintaining visual hierarchy across a masonry grid.
+
+## Hard Problems
+
+**Testnet filtering** — Agora shared the testnet with other apps, so events from other projects appeared in queries. Had to identify 3 different entity schemas and filter by Agora-specific fields.
+
+**Wallet address case sensitivity** — Checksummed vs lowercase addresses caused queries to silently return empty results. This took hours to debug and led to a defensive normalization layer throughout the codebase.
+
+**The approval system** — Discovering Arkiv's ownership constraint mid-build forced a complete redesign of the community governance model. The result was architecturally sounder.
+
+## Stack
+
+Next.js 16 + TypeScript · Tailwind CSS · Arkiv SDK (Kaolin testnet) · wagmi + viem · Anthropic Claude API · QR code generation + scanning · Vercel
