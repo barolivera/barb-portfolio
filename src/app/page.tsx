@@ -1,10 +1,9 @@
+import React from "react";
 import {
   Heading,
-  Text,
   RevealFx,
   Column,
-  Badge,
-  Row,
+  Flex,
   Schema,
   Meta,
 } from "@once-ui-system/core";
@@ -23,7 +22,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column fillWidth horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -37,45 +36,108 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
+
+      {/* Full-bleed Gradient Hero */}
+      <Flex
+        fillWidth
+        horizontal="center"
+        vertical="center"
+        position="relative"
+        style={{
+          minHeight: "max(70vh, 680px)",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background image */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('/images/background gradient.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+
+        {/* Grain overlay */}
+        <div className="hero-grain" />
+
+        {/* Hero content */}
+        <Column
+          horizontal="center"
+          align="center"
+          paddingX="l"
+          position="relative"
+          zIndex={1}
+          style={{ maxWidth: "946px" }}
+        >
+          <RevealFx translateY="4" fillWidth horizontal="center">
+            <Heading
+              as="h1"
+              wrap="balance"
+              variant="display-strong-xl"
+              align="center"
+              style={{
+                color: "#0a0a0a",
+                fontSize: "64px",
+                lineHeight: "68px",
+                letterSpacing: "-2.56px",
+                fontWeight: 600,
+              }}
             >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              {"Hello, I'm Barb – a Product Designer crafting digital experiences, one pixel at a time.".split(" ").map((word, i) => (
+                <React.Fragment key={i}>
+                  <span
+                    className="hero-word"
+                    style={{ animationDelay: `${0.1 + i * 0.12}s` }}
+                  >
+                    {word}
+                  </span>
+                  {" "}
+                </React.Fragment>
+              ))}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
         </Column>
+      </Flex>
+
+      {/* Projects section */}
+      <Column maxWidth="m" gap="xl" paddingY="64" horizontal="center" fillWidth paddingX="l">
+        <Heading as="h2" variant="heading-strong-xl" style={{ letterSpacing: "-0.02em" }}>
+          Featured Projects
+        </Heading>
+        <Projects />
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      <Projects range={[2]} />
+
+      {/* Hero styles */}
+      <style>{`
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-word {
+          display: inline-block;
+          opacity: 0;
+          animation: fadeSlideUp 0.7s ease-out forwards;
+        }
+
+        .hero-grain {
+          position: absolute;
+          inset: 0;
+          opacity: 0.35;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+          background-repeat: repeat;
+          background-size: 100%;
+          pointer-events: none;
+        }
+      `}</style>
     </Column>
   );
 }

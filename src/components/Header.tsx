@@ -26,27 +26,28 @@ export const Header = () => {
       <Row
         fitHeight
         className={styles.position}
-        position="sticky"
+        position="fixed"
         as="header"
         zIndex={9}
         fillWidth
         padding="8"
         horizontal="center"
         data-border="rounded"
-        s={{
-          position: "fixed",
-        }}
+        style={{ top: 0 }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s" />
         <Row fillWidth horizontal="center">
           <Row
-            background="page"
             border="neutral-alpha-weak"
             radius="m-4"
-            shadow="l"
             padding="4"
             horizontal="center"
             zIndex={1}
+            style={{
+              background: "rgba(255, 255, 255, 0.7)",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+            }}
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (

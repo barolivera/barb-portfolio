@@ -51,7 +51,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="m" paddingX="l" style={{ paddingTop: "104px" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}

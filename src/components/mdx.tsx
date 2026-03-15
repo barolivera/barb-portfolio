@@ -27,6 +27,11 @@ import {
   Line,
 } from "@once-ui-system/core";
 
+import { FeatureGrid } from "@/components/mdx/FeatureGrid";
+import { ArchTable } from "@/components/mdx/ArchTable";
+import { ColorSection } from "@/components/mdx/ColorSection";
+import { VideoBlock } from "@/components/mdx/VideoBlock";
+
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
   children: ReactNode;
@@ -85,14 +90,27 @@ function slugify(str: string): string {
   }).replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
+const headingStyles: Record<string, { marginTop: string; marginBottom: string; variant?: string }> = {
+  h2: { marginTop: "48", marginBottom: "16" },
+  h3: { marginTop: "32", marginBottom: "12" },
+};
+
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
+  const style = headingStyles[as] || { marginTop: "24", marginBottom: "12" };
+
   const CustomHeading = ({
     children,
     ...props
   }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
     const slug = slugify(children as string);
     return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+      <HeadingLink
+        marginTop={style.marginTop as any}
+        marginBottom={style.marginBottom as any}
+        as={as}
+        id={slug}
+        {...props}
+      >
         {children}
       </HeadingLink>
     );
@@ -106,11 +124,11 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
 function createParagraph({ children }: TextProps) {
   return (
     <Text
-      style={{ lineHeight: "175%" }}
+      style={{ lineHeight: "185%", maxWidth: "680px" }}
       variant="body-default-m"
       onBackground="neutral-medium"
       marginTop="8"
-      marginBottom="12"
+      marginBottom="16"
     >
       {children}
     </Text>
@@ -202,6 +220,10 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  FeatureGrid,
+  ArchTable,
+  ColorSection,
+  VideoBlock,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

@@ -4,19 +4,15 @@ import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
-  Flex,
   Heading,
-  Media,
   Text,
   SmartLink,
   Row,
-  Avatar,
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
-import { formatDate } from "@/utils/formatDate";
+import { ArrowUpRight, Play } from "lucide-react";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
@@ -73,8 +69,15 @@ export default async function Project({
       src: person.avatar,
     })) || [];
 
+  const rawTags = Array.isArray(post.metadata.tag)
+    ? post.metadata.tag
+    : post.metadata.tag
+      ? [post.metadata.tag]
+      : [];
+  const tags = rawTags.flatMap((t: string) => t.split(" · ").map((s: string) => s.trim()).filter(Boolean));
+
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" fillWidth horizontal="center">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -92,39 +95,140 @@ export default async function Project({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href="/work">
-          <Text variant="label-strong-m">Projects</Text>
-        </SmartLink>
-        <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-        </Text>
-        <Heading variant="display-strong-m">{post.metadata.title}</Heading>
-      </Column>
-      <Row marginBottom="32" horizontal="center">
-        <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
-          <Text variant="label-default-m" onBackground="brand-weak">
-            {post.metadata.team?.map((member, idx) => (
-              <span key={idx}>
-                {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">
-                    ,{" "}
-                  </Text>
-                )}
-                <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
-              </span>
-            ))}
+
+      {/* Hero Section */}
+      <Column
+        fillWidth
+        horizontal="center"
+        paddingX="l"
+        paddingTop="80"
+        paddingBottom="40"
+        style={{ background: "#F5F5F5" }}
+      >
+        <Column maxWidth="m" gap="16" fillWidth>
+          <SmartLink href="/work">
+            <Text variant="label-strong-s" onBackground="neutral-weak">
+              ← Back to projects
+            </Text>
+          </SmartLink>
+
+          <Heading
+            as="h1"
+            variant="display-strong-xl"
+            wrap="balance"
+          >
+            {post.metadata.title}
+          </Heading>
+
+          <Text
+            variant="heading-default-l"
+            onBackground="neutral-medium"
+            wrap="balance"
+            style={{ maxWidth: "720px" }}
+          >
+            {post.metadata.summary}
           </Text>
-        </Row>
-      </Row>
-      {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <CustomMDX source={post.content} />
+
+          {tags.length > 0 && (
+            <Row gap="8" vertical="center" wrap>
+              {tags.map((tag: string, idx: number) => (
+                <span
+                  key={idx}
+                  style={{
+                    border: "1px solid var(--neutral-on-background-strong, #111)",
+                    background: "transparent",
+                    fontFamily: "var(--font-heading), monospace",
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.04em",
+                    padding: "4px 10px",
+                    borderRadius: "4px",
+                    color: "var(--neutral-on-background-strong, #111)",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </Row>
+          )}
+
+          <Row gap="8" vertical="center" marginTop="8">
+            {post.metadata.link && (
+              <a
+                href={post.metadata.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  border: "1px solid var(--neutral-on-background-strong, #111)",
+                  background: "transparent",
+                  padding: "6px 12px",
+                  borderRadius: "4px",
+                  fontFamily: "var(--font-body), sans-serif",
+                  fontSize: "13px",
+                  color: "var(--neutral-on-background-strong, #111)",
+                  textDecoration: "none",
+                }}
+              >
+                View Project <ArrowUpRight size={16} />
+              </a>
+            )}
+            {post.metadata.demo && (
+              <a
+                href={post.metadata.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  border: "1px solid var(--neutral-on-background-strong, #111)",
+                  background: "transparent",
+                  padding: "6px 12px",
+                  borderRadius: "4px",
+                  fontFamily: "var(--font-body), sans-serif",
+                  fontSize: "13px",
+                  color: "var(--neutral-on-background-strong, #111)",
+                  textDecoration: "none",
+                }}
+              >
+                Watch Demo <Play size={16} />
+              </a>
+            )}
+            {post.metadata.team && post.metadata.team.length > 0 && (
+              <Row gap="12" vertical="center">
+                <AvatarGroup reverse avatars={avatars} size="s" />
+                <Text variant="label-default-s" onBackground="neutral-weak">
+                  {post.metadata.team.map((member) => member.name).join(", ")}
+                </Text>
+              </Row>
+            )}
+          </Row>
+        </Column>
       </Column>
-      <Column fillWidth gap="40" horizontal="center" marginTop="40">
+
+
+      {/* Case Study Content */}
+      <Column
+        fillWidth
+        horizontal="center"
+        paddingX="l"
+        paddingY="48"
+      >
+        <Column
+          as="article"
+          fillWidth
+          style={{ maxWidth: "680px" }}
+        >
+          <CustomMDX source={post.content} />
+        </Column>
+      </Column>
+
+      {/* Related Projects */}
+      <Column fillWidth gap="40" horizontal="center" paddingX="l" paddingTop="40" paddingBottom="80" maxWidth="m">
         <Line maxWidth="40" />
         <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
           Related projects
