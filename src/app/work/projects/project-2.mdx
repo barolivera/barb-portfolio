@@ -7,8 +7,11 @@ images:
   - "/images/projects/peerlypay-trade.png.png"
   - "/images/projects/peerlypay-payment.png.png"
   - "/images/projects/peerlypay-profile.png.png"
+tag: "Next.js · Stellar Soroban · Tailwind CSS · shadcn/ui · Wagmi/Viem · Vercel"
 link: "https://peerly-pay.vercel.app"
 ---
+
+<VideoBlock src="/images/projects/peerly-video.mp4" />
 
 ## Overview
 
@@ -26,17 +29,33 @@ People in emerging markets who earn in USDC need to convert to local fiat (ARS, 
 
 The primary user is a freelancer checking their balance and making trades on their phone. Every screen was designed mobile-first — large touch targets, minimal cognitive load, clear status communication at each step of the trade flow.
 
+![PeerlyPay home screen](/images/projects/peerlypay/peerlypay-home_case.png)
+
 ### Trust Through Transparency
 
 P2P trading requires trust between strangers. The UI makes the escrow mechanism visible — users can see their funds are locked in a smart contract, not held by a platform. The Confirm Trade screen shows exactly what you send, what you receive, which network, and estimated time before any commitment.
+
+![Confirm trade screen](/images/projects/peerlypay/peerlypay-trade_case.png)
+
+![Trader profile with trust score](/images/projects/peerlypay/peerlypay-profile_case.png)
 
 ### Reducing Friction for Crypto Newcomers
 
 The Enable USDC step (setting up a Stellar trustline) is a technical requirement that could confuse non-crypto users. I reframed it as "Secure your payment" — a one-time setup that protects the user — to make it feel like a safety feature rather than a blockchain operation.
 
+![Make payment screen](/images/projects/peerlypay/peerlypay-payment_case.png)
+
 ### Trade Flow
 
 Connect wallet → Create or match an order → Funds locked in Soroban escrow → Off-chain fiat transfer via Bank/MercadoPago → Seller confirms → USDC released. Dispute flow bridges to Base for arbitration via Slice Protocol.
+
+## Reflections
+
+PeerlyPay reached a functional MVP demo during the Impacta Bootcamp by Stellar. The core trade flow — from wallet connection to escrow confirmation — worked end to end, which validated that the interaction model was feasible for a Web3-native audience.
+
+The biggest open question going forward is onboarding for non-crypto users. The "Enable USDC" / Stellar trustline setup is a technical requirement with no clean UX solution — we reframed it as a safety feature, but it still introduces friction that would need further testing with real users unfamiliar with blockchain concepts.
+
+If I were to continue iterating, I'd focus on: validating the onboarding flow with users who have no prior crypto experience, simplifying the trust-building moment before the first trade, and exploring how reputation signals between traders could reduce perceived risk over time.
 
 ## Stack
 
