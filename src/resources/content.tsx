@@ -64,7 +64,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm Barbara Olivera, a Visual and UI Designer from Buenos Aires, Argentina with a strong foundation in graphic design and digital experiences.
+        I'm Barbara Olivera, a Product Designer from Buenos Aires, Argentina with a strong foundation in graphic design and digital experiences.
         <br /><br />
         My work blends aesthetics, usability and innovation, ensuring that every design is both visually compelling and functionally seamless.
         <br /><br />
@@ -201,7 +201,7 @@ const about: About = {
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
+  title: "Projects",
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
