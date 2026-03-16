@@ -45,6 +45,7 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
