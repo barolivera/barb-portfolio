@@ -106,7 +106,7 @@ export default function Home() {
         <Heading as="h2" variant="heading-strong-xl" style={{ letterSpacing: "-0.02em" }}>
           Featured Projects
         </Heading>
-        <Projects />
+        <Projects featured />
       </Column>
 
       {/* Hero styles */}
