@@ -3,12 +3,12 @@ import {
   Heading,
   RevealFx,
   Column,
-  Flex,
   Schema,
   Meta,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import ShaderGradientBg from "@/components/ShaderGradientBg";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -38,38 +38,33 @@ export default function Home() {
       />
 
       {/* Full-bleed Gradient Hero */}
-      <Flex
-        fillWidth
-        horizontal="center"
-        vertical="center"
-        position="relative"
+      <div
         style={{
-          minHeight: "max(70vh, 680px)",
+          position: "relative",
+          width: "100vw",
+          marginLeft: "calc(-50vw + 50%)",
+          minHeight: "100vh",
           overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        {/* Background image */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "url('/images/background gradient.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-
-        {/* Grain overlay */}
-        <div className="hero-grain" />
+        {/* Shader gradient background */}
+        <ShaderGradientBg />
 
         {/* Hero content */}
-        <Column
-          horizontal="center"
-          align="center"
-          paddingX="l"
-          position="relative"
-          zIndex={1}
-          style={{ maxWidth: "946px" }}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            maxWidth: "946px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            paddingLeft: "var(--responsive-space-l)",
+            paddingRight: "var(--responsive-space-l)",
+          }}
         >
           <RevealFx translateY="4" fillWidth horizontal="center">
             <Heading
@@ -98,8 +93,8 @@ export default function Home() {
               ))}
             </Heading>
           </RevealFx>
-        </Column>
-      </Flex>
+        </div>
+      </div>
 
       {/* Projects section */}
       <Column maxWidth="m" gap="xl" paddingY="64" horizontal="center" fillWidth paddingX="l">
@@ -128,15 +123,6 @@ export default function Home() {
           animation: fadeSlideUp 0.7s ease-out forwards;
         }
 
-        .hero-grain {
-          position: absolute;
-          inset: 0;
-          opacity: 0.35;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-          background-repeat: repeat;
-          background-size: 100%;
-          pointer-events: none;
-        }
       `}</style>
     </Column>
   );
