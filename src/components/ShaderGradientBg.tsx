@@ -40,7 +40,6 @@ export default function ShaderGradientBg() {
         positionX={-1.4}
         positionY={0}
         positionZ={0}
-        rangeEnd={40}
         rotationX={0}
         rotationY={10}
         rotationZ={50}
