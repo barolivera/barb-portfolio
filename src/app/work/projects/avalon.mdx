@@ -1,0 +1,64 @@
+---
+title: "Avalon — Visual Strategy Builder"
+publishedAt: "2026-03-03"
+summary: "Visual strategy builder with on-chain AI agents for retail crypto traders — transparent, safe, and fee-aligned."
+images:
+  - "/images/projects/avalon/cover.png"
+  - "/images/projects/avalon/strategy-builder.png"
+  - "/images/projects/avalon/workflow.png"
+  - "/images/projects/avalon/competitive.png"
+tag: "Next.js · Solidity · Chainlink · ERC-8004 · Avalanche"
+link: "https://heyavalon.vercel.app"
+demo: "https://vimeo.com/1175890352"
+---
+
+![Avalon platform overview](/images/projects/avalon/cover.png)
+
+## The Problem
+
+AI trading bots are black boxes. Retail traders deposit funds, can't see what happens, and lose money when the bot fails. Real cases: Clawdbot lost $1M, Lobstar Wilde lost $450K, a decimal error sent 40K SOL to the wrong address. All because there were no on-chain guardrails.
+
+## The Solution
+
+Avalon lets users build visual trading strategies with AI agents that have on-chain guardrails, public decision logs, and a fee model that only charges when profitable.
+
+## How It Works
+
+**Visual Strategy Builder** — A drag-and-drop interface connecting five components: Chainlink Price Feeds, Conditions, Actions, Risk Controls, and Fee Structure. One click deploys the strategy on-chain to Avalanche Fuji.
+
+![Visual Strategy Builder](/images/projects/avalon/strategy-builder.png)
+
+**AI Agent with On-Chain Identity (ERC-8004)** — Each agent is registered on an Identity Registry with a public reputation score. Users choose agents by verified track record, not marketing. Agents operate autonomously within strict user-defined limits.
+
+**Platform Engagement Workflow** — Connect MetaMask → Build Strategy → Deploy → Activate → Pause → Withdraw. Every action is logged on-chain.
+
+![Platform engagement workflow](/images/projects/avalon/workflow.png)
+
+## Competitive Advantage
+
+![Competitive advantage comparison](/images/projects/avalon/competitive.png)
+
+Avalon is the only platform that combines a visual builder, autonomous AI, full transparency, and a pay-only-if-profitable fee model (10%) — at half the industry fee.
+
+## Deployed Contracts (Avalanche Fuji)
+
+- **StrategyVault:** `0x5C126932a5394Ca843608d38FfeB8A2AF9DBbBF3`
+- **StrategyExecutor:** `0x84a2408A7d7966A55ae6D28dc956AA52a6c28D6C`
+- **FeeCollector:** `0x04DAF41Fe41E2c25De5Dc9901024c89Fe9773053`
+
+Integrated with ERC-8004, Trader Joe, and Chainlink.
+
+## Demo
+
+<iframe
+  src="https://player.vimeo.com/video/1175890352"
+  width="100%"
+  style={{ aspectRatio: "16/9", border: "none", borderRadius: "8px" }}
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowFullScreen
+/>
+
+## Links
+
+- [Live Demo](https://heyavalon.vercel.app)
+- [GitHub](https://github.com/barolivera/avalon)

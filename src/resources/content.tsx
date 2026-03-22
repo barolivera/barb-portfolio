@@ -32,7 +32,7 @@ const home: Home = {
   label: "Home",
   title: "Barbara Olivera — Product Designer",
   description: "Portfolio of Barbara Olivera, a Product Designer crafting digital experiences.",
-  headline: <>Hello, I'm Barb – a Product Designer crafting digital experiences, one pixel at a time.</>,
+  headline: <>Hello, I'm Barb — a Product Designer who moves between craft, code, and curiosity.</>,
   featured: {
     display: false,
     title: <></>,
@@ -64,13 +64,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm Barbara Olivera, a Product Designer from Buenos Aires, Argentina with a strong foundation in graphic design and digital experiences.
+        I'm Barbara Olivera, a Product Designer from Buenos Aires. I started in graphic design and brand identity, and over time found myself more and more drawn to the product side — how things work, not just how they look.
         <br /><br />
-        My work blends aesthetics, usability and innovation, ensuring that every design is both visually compelling and functionally seamless.
+        These days I work a lot with AI tools — Claude, Cursor, Midjourney, Figma MCP — not because it's trendy but because they genuinely changed how I think through problems. I get to explore more directions, test ideas faster, and stay closer to what actually matters in a design.
         <br /><br />
-        I specialize in crafting visually striking, user-friendly digital experiences that seamlessly combine form and function. With a focus on clean layouts and intuitive interactions, I bring ideas to life in a way that feels effortless and engaging.
-        <br /><br />
-        Beyond interfaces, I'm exploring illustration and 3D design, seeking new ways to bring creativity into digital spaces. Whether it's crafting a brand identity, refining a design system, or implementing pixel-perfect layouts, I thrive on turning ideas into polished, intuitive experiences.
+        Lately I've been building in Web3, which is a space I find genuinely exciting. There's a lot to figure out, and I like that.
       </>
     ),
   },

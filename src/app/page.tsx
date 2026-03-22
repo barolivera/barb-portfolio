@@ -80,7 +80,7 @@ export default function Home() {
                 fontWeight: 600,
               }}
             >
-              {"Hello, I'm Barb – a Product Designer crafting digital experiences, one pixel at a time.".split(" ").map((word, i) => (
+              {"Hello, I'm Barb — a Product Designer who moves between craft, code, and curiosity.".split(" ").map((word, i) => (
                 <React.Fragment key={i}>
                   <span
                     className="hero-word"
