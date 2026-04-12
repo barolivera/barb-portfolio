@@ -187,7 +187,7 @@ const schema: SchemaConfig = {
   logo: "",
   type: "Person",
   name: "Barbara Olivera",
-  description: "Portfolio of Barbara Olivera, a Product Designer crafting digital experiences.",
+  description: "Portfolio of Barbara Olivera, a Product Designer from Buenos Aires working at the intersection of craft, code, and Web3.",
   email: "",
 };
 

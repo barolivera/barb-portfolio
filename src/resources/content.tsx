@@ -31,7 +31,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: "Barbara Olivera — Product Designer",
-  description: "Portfolio of Barbara Olivera, a Product Designer crafting digital experiences.",
+  description: "Portfolio of Barbara Olivera, a Product Designer from Buenos Aires working at the intersection of craft, code, and Web3.",
   headline: <>Hello, I'm Barb — a Product Designer who moves between craft, code, and curiosity.</>,
   featured: {
     display: false,
