@@ -32,6 +32,10 @@ export async function generateMetadata() {
         },
       ],
     },
+    twitter: {
+      ...meta.twitter,
+      images: ["/og-image.png"],
+    },
   };
 }
 
