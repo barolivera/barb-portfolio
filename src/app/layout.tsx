@@ -17,13 +17,28 @@ import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const meta = await Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: home.image,
   });
+
+  return {
+    ...meta,
+    openGraph: {
+      ...meta.openGraph,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Barbara Olivera — Product Designer",
+        },
+      ],
+    },
+  };
 }
 
 export default async function RootLayout({
